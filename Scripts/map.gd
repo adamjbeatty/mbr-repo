@@ -56,7 +56,7 @@ func _ready() -> void:
 		player_path.tile_map_data = Global.map_tile_data[7]
 		mask.custom_minimum_size.x = (player_path.get_used_rect().size.x + player_path.get_used_rect().position.x) * 16
 		
-		var next_nodes = Global.path_nodes[Global.taken_path.size() - 1]
+		var next_nodes = Global.path_nodes[Global.taken_path[Global.taken_path.size() - 1]]
 		for node in Global.path_nodes.keys():
 			draw_node(node)
 			if not node in next_nodes:

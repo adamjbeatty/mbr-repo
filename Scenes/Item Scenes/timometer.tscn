@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://ctgnpkcyy8ht2"]
+
+[ext_resource type="PackedScene" uid="uid://b4rgvvgialq2i" path="res://Scenes/item_parent.tscn" id="1_idsas"]
+[ext_resource type="Script" uid="uid://coqdl681yqljj" path="res://Scripts/Item _Scripts/timometer.gd" id="2_c437l"]
+[ext_resource type="Texture2D" uid="uid://dy4ofpupk2qqj" path="res://Assets/MBR Uncommon.png" id="2_uw8ym"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idsas"]
+size = Vector2(28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d55h7"]
+atlas = ExtResource("2_uw8ym")
+region = Rect2(0, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adudv"]
+atlas = ExtResource("2_uw8ym")
+region = Rect2(32, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6vy4"]
+atlas = ExtResource("2_uw8ym")
+region = Rect2(64, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw4di"]
+atlas = ExtResource("2_uw8ym")
+region = Rect2(96, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdw76"]
+atlas = ExtResource("2_uw8ym")
+region = Rect2(128, 160, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suecs"]
+atlas = ExtResource("2_uw8ym")
+region = Rect2(160, 160, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppaot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d55h7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adudv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6vy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw4di")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdw76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suecs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[node name="Timometer" instance=ExtResource("1_idsas")]
+script = ExtResource("2_c437l")
+
+[node name="CollisionShape2D" parent="Item" index="0"]
+shape = SubResource("RectangleShape2D_idsas")
+
+[node name="AnimatedSprite2D" parent="Item" index="1"]
+sprite_frames = SubResource("SpriteFrames_ppaot")
+autoplay = "default"
+frame_progress = 0.087451

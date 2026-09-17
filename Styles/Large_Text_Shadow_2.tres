@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bvf7km7ny6rh5"]
+
+[ext_resource type="FontFile" uid="uid://d11xf48fteue" path="res://Assets/pcsenior.ttf" id="1_bdkvm"]
+
+[resource]
+font = ExtResource("1_bdkvm")
+font_size = 20
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.45098)
+shadow_offset = Vector2(4, 4)

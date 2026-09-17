@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://i4pdjlfu1kha"]
+
+[ext_resource type="Texture2D" uid="uid://b5m3dxxs6xklk" path="res://Assets/MBR UI Elements.png" id="1_683cu"]
+[ext_resource type="Script" uid="uid://b66ndq2l0ex5s" path="res://Scenes/life_object.gd" id="1_hx6oe"]
+[ext_resource type="Script" uid="uid://qt156redppc" path="res://Scenes/life_rigid_body.gd" id="2_ugq5h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hx6oe"]
+radius = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hx6oe"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx6oe"]
+size = Vector2(43, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugq5h"]
+atlas = ExtResource("1_683cu")
+region = Rect2(0, 0, 48, 48)
+margin = Rect2(1, 0, 0, 0)
+
+[node name="LifeObject" type="Node2D"]
+script = ExtResource("1_hx6oe")
+
+[node name="CursorPoint" type="StaticBody2D" parent="."]
+position = Vector2(0, -1)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CursorPoint"]
+shape = SubResource("CircleShape2D_hx6oe")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+input_pickable = true
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_hx6oe")
+gravity_scale = 0.0
+freeze_mode = 1
+script = ExtResource("2_ugq5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_hx6oe")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_ugq5h")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, -1)
+node_a = NodePath("../CursorPoint")
+node_b = NodePath("../RigidBody2D")
+softness = 2.0
+
+[connection signal="input_event" from="RigidBody2D" to="." method="_on_rigid_body_2d_input_event"]

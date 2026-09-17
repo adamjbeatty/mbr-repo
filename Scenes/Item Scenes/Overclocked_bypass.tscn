@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvgmth288y40b"]
+
+[ext_resource type="PackedScene" uid="uid://b4rgvvgialq2i" path="res://Scenes/item_parent.tscn" id="1_0spwn"]
+[ext_resource type="Script" uid="uid://bscxbse6qqmk2" path="res://Scripts/Item _Scripts/overclocked_bypass.gd" id="2_hofct"]
+[ext_resource type="Texture2D" uid="uid://di1k0omc77ekk" path="res://Assets/MBR Rare.png" id="2_yuk00"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emmow"]
+size = Vector2(30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n77v"]
+atlas = ExtResource("2_yuk00")
+region = Rect2(0, 80, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x48xm"]
+atlas = ExtResource("2_yuk00")
+region = Rect2(32, 80, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eobt"]
+atlas = ExtResource("2_yuk00")
+region = Rect2(64, 80, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2wdw"]
+atlas = ExtResource("2_yuk00")
+region = Rect2(96, 80, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkfh1"]
+atlas = ExtResource("2_yuk00")
+region = Rect2(128, 80, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6froh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n77v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x48xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eobt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2wdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkfh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2wdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eobt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x48xm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.5
+}]
+
+[node name="Overclocked Bypass" instance=ExtResource("1_0spwn")]
+script = ExtResource("2_hofct")
+
+[node name="CollisionShape2D" parent="Item" index="0"]
+shape = SubResource("RectangleShape2D_emmow")
+
+[node name="AnimatedSprite2D" parent="Item" index="1"]
+sprite_frames = SubResource("SpriteFrames_6froh")
+autoplay = "default"
+frame_progress = 0.165515

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctoksruhbeg8e"]
+
+[ext_resource type="PackedScene" uid="uid://b4rgvvgialq2i" path="res://Scenes/item_parent.tscn" id="1_dawqr"]
+[ext_resource type="Script" uid="uid://6u1ft6ipyf1" path="res://Scripts/Item _Scripts/qlaws.gd" id="2_7pfr8"]
+[ext_resource type="Texture2D" uid="uid://dy4ofpupk2qqj" path="res://Assets/MBR Uncommon.png" id="2_ku4ou"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ku4ou"]
+rough = true
+bounce = 0.5
+
+[sub_resource type="GDScript" id="GDScript_7pfr8"]
+script/source = "extends RigidBody2D
+
+var teleport
+var target_pos
+
+	
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if teleport:
+		state.transform.origin = target_pos
+		
+		state.transform.x = Vector2(cos(0), sin(0))
+		state.transform.y = Vector2(-sin(0), cos(0))
+		
+		linear_velocity = Vector2(0,0)
+		angular_velocity = 0
+		
+		teleport = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjg6x"]
+size = Vector2(44, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pfr8"]
+atlas = ExtResource("2_ku4ou")
+region = Rect2(0, 32, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjg6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pfr8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Qlaws" instance=ExtResource("1_dawqr")]
+script = ExtResource("2_7pfr8")
+
+[node name="Item" parent="." index="1"]
+physics_material_override = SubResource("PhysicsMaterial_ku4ou")
+script = SubResource("GDScript_7pfr8")
+
+[node name="CollisionShape2D" parent="Item" index="0"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_kjg6x")
+
+[node name="AnimatedSprite2D" parent="Item" index="1"]
+sprite_frames = SubResource("SpriteFrames_kjg6x")
+
+[node name="Button" parent="Item" index="2"]
+offset_left = -20.0
+offset_right = 24.0

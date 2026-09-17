@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://barym6hhh5lof"]
+
+[ext_resource type="PackedScene" uid="uid://b4rgvvgialq2i" path="res://Scenes/item_parent.tscn" id="1_g4sjl"]
+[ext_resource type="Script" uid="uid://bqjqkbwjdcj8q" path="res://Scripts/Item _Scripts/flash_drive.gd" id="2_7sk2p"]
+[ext_resource type="Texture2D" uid="uid://c0oynv3t4pdq3" path="res://Assets/MBR Common.png" id="3_7sk2p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7sk2p"]
+rough = true
+bounce = 0.5
+
+[sub_resource type="GDScript" id="GDScript_5oqss"]
+script/source = "extends RigidBody2D
+
+var teleport
+var target_pos
+
+	
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if teleport:
+		state.transform.origin = target_pos
+		
+		state.transform.x = Vector2(cos(0), sin(0))
+		state.transform.y = Vector2(-sin(0), cos(0))
+		
+		linear_velocity = Vector2(0,0)
+		angular_velocity = 0
+		
+		teleport = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7sk2p"]
+size = Vector2(32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oqss"]
+atlas = ExtResource("3_7sk2p")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14pyl"]
+atlas = ExtResource("3_7sk2p")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_277ql"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_5oqss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14pyl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="FlashDrive" instance=ExtResource("1_g4sjl")]
+script = ExtResource("2_7sk2p")
+
+[node name="Item" parent="." index="1"]
+physics_material_override = SubResource("PhysicsMaterial_7sk2p")
+script = SubResource("GDScript_5oqss")
+
+[node name="CollisionShape2D" parent="Item" index="0"]
+shape = SubResource("RectangleShape2D_7sk2p")
+
+[node name="AnimatedSprite2D" parent="Item" index="1"]
+sprite_frames = SubResource("SpriteFrames_277ql")
+autoplay = "default"
+frame_progress = 0.175409
+
+[node name="Button" parent="Item" index="2"]
+offset_left = -16.0
+offset_right = 16.0
+pivot_offset = Vector2(16, 8)

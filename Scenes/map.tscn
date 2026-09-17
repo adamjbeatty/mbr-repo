@@ -1,0 +1,219 @@
+[gd_scene load_steps=13 format=3 uid="uid://clseijtg1gnd"]
+
+[ext_resource type="Script" uid="uid://os6dbocj5o5c" path="res://Scripts/map.gd" id="1_ci6au"]
+[ext_resource type="Texture2D" uid="uid://llcbxrcus8ru" path="res://Assets/MBR Map Paths.png" id="2_26yhd"]
+[ext_resource type="PackedScene" uid="uid://b8iccggwi8a3v" path="res://Scenes/TileableBG.tscn" id="3_p3ir5"]
+[ext_resource type="Shader" uid="uid://dqa2apc5fvs52" path="res://Styles/Rainbow.gdshader" id="4_myvm1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3ir5"]
+texture = ExtResource("2_26yhd")
+2:0/0 = 0
+2:0/0/terrain_set = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+5:1/0 = 0
+5:1/0/terrain_set = 0
+6:1/0 = 0
+6:1/0/terrain_set = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+5:2/0 = 0
+5:2/0/terrain_set = 0
+6:2/0 = 0
+6:2/0/terrain_set = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+
+[sub_resource type="TileSet" id="TileSet_myvm1"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Path"
+terrain_set_0/terrain_0/color = Color(0.719175, 0, 0.231651, 1)
+sources/1 = SubResource("TileSetAtlasSource_p3ir5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q0mm3"]
+shader = ExtResource("4_myvm1")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26yhd"]
+texture = ExtResource("2_26yhd")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_myvm1"]
+texture = ExtResource("2_26yhd")
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q0mm3"]
+sources/0 = SubResource("TileSetAtlasSource_26yhd")
+sources/1 = SubResource("TileSetAtlasSource_myvm1")
+
+[sub_resource type="Shader" id="Shader_myvm1"]
+code = "shader_type canvas_item;
+uniform float u_speed = .1; 
+uniform int pixelation = 100;
+
+uniform vec4 u_color_low : source_color = vec4(0.374, 0.374, 0.374,1.0);
+uniform vec4 u_color_mid_red : source_color = vec4(.8, 0.8, 0.8, 1.0); 
+uniform vec4 u_color_high : source_color = vec4(1.0, 1.0, 1.0, 1.0); 
+
+
+
+#define iTime (TIME * u_speed)
+#define iResolution 1.0/SCREEN_PIXEL_SIZE
+
+const mat2 mtx = mat2( vec2(0.80, -0.60), vec2(0.60, 0.80) );
+
+float rand(vec2 n) { 
+    return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+}
+
+float noise(vec2 p){
+    vec2 ip = floor(p);
+    vec2 u = fract(p);
+    u = u * u * (3.0 - 2.0 * u);
+
+    float res = mix(
+        mix(rand(ip), rand(ip + vec2(1.0, 0.0)), u.x),
+        mix(rand(ip + vec2(0.0, 1.0)), rand(ip + vec2(1.0, 1.0)), u.x), u.y);
+        
+    return res * res;
+}
+
+float fbm( vec2 p )
+{
+    float f = 0.0;
+    
+    f += 0.500000 * noise( p + iTime ); p = mtx * p * 2.02;
+    f += 0.031250 * noise( p ); p = mtx * p * 2.01;
+    f += 0.250000 * noise( p ); p = mtx * p * 2.03;
+    f += 0.125000 * noise( p ); p = mtx * p * 2.01;
+    f += 0.062500 * noise( p ); p = mtx * p * 2.04;
+    f += 0.015625 * noise( p + sin(iTime) );
+
+    return f / 1.0;
+}
+
+float pattern( in vec2 p )
+{
+	return fbm( p + fbm( p + fbm( p ) ) );
+}
+
+vec4 colormap(float x) {
+    
+    if (x < 0.24) { 
+        return mix(u_color_low, u_color_mid_red, x / 0.24);
+    } 
+    else { 
+        return mix(u_color_mid_red, u_color_high, (x - 0.24) / 0.76);
+    }
+}
+
+void fragment()
+{
+    vec2 screen_size = 0.25 / SCREEN_PIXEL_SIZE;
+    vec2 uv = round(SCREEN_UV * float(pixelation)) / float(pixelation); 
+   	float shade = pattern(uv);
+	
+    COLOR.rgba *= colormap(shade);
+
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_np2xp"]
+shader = SubResource("Shader_myvm1")
+shader_parameter/u_speed = 0.3
+shader_parameter/pixelation = 1000
+shader_parameter/u_color_low = Color(0.230315, 0.230315, 0.230315, 1)
+shader_parameter/u_color_mid_red = Color(0.699653, 0.699654, 0.699653, 1)
+shader_parameter/u_color_high = Color(1, 1, 1, 1)
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_ci6au")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
+texture_filter = 2
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(0, 0.5)
+repeat_size = Vector2(624, 528)
+
+[node name="Node2D" parent="Parallax2D" instance=ExtResource("3_p3ir5")]
+visible = false
+texture_filter = 1
+
+[node name="Path1" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path2" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path3" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path4" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path5" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path6" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path7" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="PathMask" type="ColorRect" parent="."]
+clip_children = 1
+offset_right = 8.0
+offset_bottom = 527.0
+
+[node name="TakenPath" type="TileMapLayer" parent="PathMask"]
+material = SubResource("ShaderMaterial_q0mm3")
+tile_set = SubResource("TileSet_q0mm3")
+
+[node name="PathNodes" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(387, 229)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_np2xp")
+offset_left = -1246.0
+offset_top = -454.0
+offset_right = 2318.0
+offset_bottom = 1055.0
+mouse_filter = 2
+color = Color(0.303239, 0.21926, 0.493141, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

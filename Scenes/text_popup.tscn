@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn06c7flivtja"]
+
+[ext_resource type="StyleBox" uid="uid://c22mydb5jbh0i" path="res://Styles/Panel_Fill.tres" id="1_qseha"]
+[ext_resource type="StyleBox" uid="uid://1gcq268rouif" path="res://Styles/Panel_Border.tres" id="2_lc38i"]
+[ext_resource type="LabelSettings" uid="uid://bpol2w1qjkfyu" path="res://Styles/Small_Text.tres" id="3_06dwx"]
+
+[node name="TextPopup" type="MarginContainer"]
+offset_right = 234.0
+offset_bottom = 39.0
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.478431, 0.478431, 0.478431, 1)
+show_behind_parent = true
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_qseha")
+
+[node name="PanelContainer" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_lc38i")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 1
+label_settings = ExtResource("3_06dwx")
+autowrap_mode = 2

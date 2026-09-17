@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://i4pdjlfu1kha"]
+
+[ext_resource type="Texture2D" uid="uid://b5m3dxxs6xklk" path="res://Assets/MBR UI Elements.png" id="1_683cu"]
+[ext_resource type="Script" uid="uid://b66ndq2l0ex5s" path="res://Scenes/life_object.gd" id="1_hx6oe"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_683cu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx6oe"]
+size = Vector2(43, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugq5h"]
+atlas = ExtResource("1_683cu")
+region = Rect2(0, 0, 48, 48)
+
+[node name="LifeObject" type="RigidBody2D"]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_683cu")
+gravity_scale = 0.0
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_hx6oe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_hx6oe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_ugq5h")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

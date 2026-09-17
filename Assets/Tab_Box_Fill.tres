@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cft8wkj53s5lh"]
+
+[ext_resource type="Texture2D" uid="uid://dndscxyf1ln3o" path="res://Assets/MBR sprite sheet.png" id="1_cpode"]
+
+[resource]
+atlas = ExtResource("1_cpode")
+region = Rect2(304, 144, 32, 32)

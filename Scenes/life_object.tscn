@@ -1,0 +1,113 @@
+[gd_scene load_steps=21 format=3 uid="uid://i4pdjlfu1kha"]
+
+[ext_resource type="Texture2D" uid="uid://b5m3dxxs6xklk" path="res://Assets/MBR UI Elements.png" id="1_683cu"]
+[ext_resource type="Script" uid="uid://b66ndq2l0ex5s" path="res://Scripts/Sub_Scripts/life_object.gd" id="1_hx6oe"]
+[ext_resource type="Script" uid="uid://qt156redppc" path="res://Scripts/life_rigid_body.gd" id="2_ugq5h"]
+[ext_resource type="LabelSettings" uid="uid://k3afp6io5wtp" path="res://Styles/Large_Text_Shadow.tres" id="4_2xr5i"]
+[ext_resource type="Script" uid="uid://dt24if2oaowls" path="res://Scripts/Sub_Scripts/lifeButton.gd" id="4_xiusf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hx6oe"]
+radius = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hx6oe"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx6oe"]
+size = Vector2(43, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugq5h"]
+atlas = ExtResource("1_683cu")
+region = Rect2(0, 0, 48, 48)
+margin = Rect2(1, 0, 0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xr5i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xiusf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8utd6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qvxs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wirub"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbrhj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k62ly"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jw137"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uo10a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c307t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mkr2i"]
+
+[node name="LifeObject" type="Node2D"]
+script = ExtResource("1_hx6oe")
+
+[node name="CursorPoint" type="StaticBody2D" parent="."]
+position = Vector2(0, -1)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CursorPoint"]
+shape = SubResource("CircleShape2D_hx6oe")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="CursorPoint"]
+node_a = NodePath("../../RigidBody2D")
+node_b = NodePath("..")
+softness = 0.25
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+input_pickable = true
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_hx6oe")
+gravity_scale = 5.0
+freeze_mode = 1
+script = ExtResource("2_ugq5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_hx6oe")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_ugq5h")
+
+[node name="Button" type="Button" parent="RigidBody2D"]
+offset_left = -65.0
+offset_top = -69.0
+offset_right = 67.0
+offset_bottom = 69.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2xr5i")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_xiusf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8utd6")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7qvxs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_wirub")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_xbrhj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k62ly")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_jw137")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uo10a")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_c307t")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mkr2i")
+button_mask = 3
+flat = true
+script = ExtResource("4_xiusf")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 36.0
+offset_top = 71.0
+offset_right = 105.0
+offset_bottom = 94.0
+text = "Boot.EXE"
+label_settings = ExtResource("4_2xr5i")
+
+[connection signal="input_event" from="RigidBody2D" to="." method="_on_rigid_body_2d_input_event"]
+[connection signal="l_click" from="RigidBody2D/Button" to="." method="_on_button_l_click"]
+[connection signal="r_click" from="RigidBody2D/Button" to="." method="_on_button_r_click"]
+[connection signal="release" from="RigidBody2D/Button" to="." method="_on_button_release"]

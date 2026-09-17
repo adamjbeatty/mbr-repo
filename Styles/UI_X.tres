@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dqbmt76fs2im5"]
+
+[ext_resource type="Texture2D" uid="uid://btthb50nub155" path="res://Assets/MBR UI Boxes.png" id="1_f4fri"]
+
+[resource]
+atlas = ExtResource("1_f4fri")
+region = Rect2(144, 0, 16, 16)

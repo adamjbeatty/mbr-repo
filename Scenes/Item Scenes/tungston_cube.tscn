@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://dydb4b6ejbujs"]
+
+[ext_resource type="PackedScene" uid="uid://b4rgvvgialq2i" path="res://Scenes/item_parent.tscn" id="1_ndm74"]
+[ext_resource type="Script" uid="uid://dqt502l140uwe" path="res://Scripts/Item _Scripts/tungston_cube.gd" id="2_2eo1j"]
+[ext_resource type="Texture2D" uid="uid://c0oynv3t4pdq3" path="res://Assets/MBR Common.png" id="3_lepfy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej37x"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv7ss"]
+atlas = ExtResource("3_lepfy")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5u2r"]
+atlas = ExtResource("3_lepfy")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3gyk"]
+atlas = ExtResource("3_lepfy")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbsyw"]
+atlas = ExtResource("3_lepfy")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo7jm"]
+atlas = ExtResource("3_lepfy")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xura"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv7ss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5u2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3gyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbsyw")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_wo7jm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="TungstonCube" instance=ExtResource("1_ndm74")]
+script = ExtResource("2_2eo1j")
+
+[node name="CollisionShape2D" parent="Item" index="0"]
+shape = SubResource("RectangleShape2D_ej37x")
+
+[node name="AnimatedSprite2D" parent="Item" index="1"]
+sprite_frames = SubResource("SpriteFrames_4xura")
+autoplay = "default"
+frame_progress = 0.438129
+
+[node name="Button" parent="Item" index="2"]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset = Vector2(16, 16)

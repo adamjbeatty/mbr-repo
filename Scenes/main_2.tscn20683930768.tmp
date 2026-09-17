@@ -1,0 +1,369 @@
+[gd_scene load_steps=26 format=3 uid="uid://ddpdou6icym4n"]
+
+[ext_resource type="PackedScene" uid="uid://clseijtg1gnd" path="res://Scenes/map.tscn" id="1_6sl1r"]
+[ext_resource type="PackedScene" uid="uid://84lftidactv4" path="res://Scenes/FullOverlay.tscn" id="1_vijbk"]
+[ext_resource type="Script" uid="uid://bi8pj6n6vpn41" path="res://Scenes/main_2.gd" id="1_ya2e4"]
+[ext_resource type="PackedScene" uid="uid://i4pdjlfu1kha" path="res://Scenes/life_object.tscn" id="4_ya2e4"]
+[ext_resource type="Texture2D" uid="uid://b5m3dxxs6xklk" path="res://Assets/MBR UI Elements.png" id="5_5lrfp"]
+[ext_resource type="Script" uid="uid://kb20llqr3btk" path="res://Scenes/life_docks.gd" id="6_f6la0"]
+
+[sub_resource type="SystemFont" id="SystemFont_6sl1r"]
+
+[sub_resource type="Theme" id="Theme_ya2e4"]
+default_font = SubResource("SystemFont_6sl1r")
+default_font_size = 15
+
+[sub_resource type="Theme" id="Theme_6sl1r"]
+default_font_size = 40
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya2e4"]
+size = Vector2(385, 863)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lrfp"]
+size = Vector2(622.5, 287)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6la0"]
+size = Vector2(235, 286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djkp1"]
+size = Vector2(72, 995)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ay0lb"]
+size = Vector2(1541, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmkph"]
+size = Vector2(1578.5, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6la0"]
+atlas = ExtResource("5_5lrfp")
+region = Rect2(208, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djkp1"]
+atlas = ExtResource("5_5lrfp")
+region = Rect2(160, 0, 48, 32)
+
+[sub_resource type="Animation" id="Animation_5lrfp"]
+resource_name = "Upload_Sway"
+length = 18.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UploadAnimation:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5, 8.9915, 13.5, 18),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.1309, 0.0, 0.1309, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_f6la0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UploadAnimation:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djkp1"]
+_data = {
+&"RESET": SubResource("Animation_f6la0"),
+&"Upload_Sway": SubResource("Animation_5lrfp")
+}
+
+[sub_resource type="Animation" id="Animation_djkp1"]
+resource_name = "Upload_Bounce"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.79377, 1.1496, 2.02548, 2.38131, 3.01085, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(0, -30), Vector2(0, 4), Vector2(0, -30), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.08935, 1.43149, 2.30738, 3, 4.63333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 61), Vector2(0, 61), Vector2(0, 79), Vector2(0, 61), Vector2(0, 79), Vector2(0, 61), Vector2(0, 61)]
+}
+
+[sub_resource type="Animation" id="Animation_ay0lb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 61)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmkph"]
+_data = {
+&"RESET": SubResource("Animation_ay0lb"),
+&"Upload_Bounce": SubResource("Animation_djkp1")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wnqf"]
+size = Vector2(764, 269)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87gun"]
+size = Vector2(551, 390.5)
+
+[node name="Main2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ya2e4")
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+stretch = true
+stretch_shrink = 2
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+size = Vector2i(768, 432)
+render_target_update_mode = 4
+
+[node name="Map" parent="SubViewportContainer2/SubViewport" instance=ExtResource("1_6sl1r")]
+texture_filter = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(768, 432)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="CanvasLayer" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_vijbk")]
+
+[node name="Text" type="Control" parent="."]
+z_index = 2
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = -6.0
+offset_right = 324.0
+offset_bottom = 17.0
+theme = SubResource("Theme_ya2e4")
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+text = "Runner"
+
+[node name="Label2" type="Label" parent="Text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1166.0
+offset_top = -6.0
+offset_right = 1476.0
+offset_bottom = 17.0
+theme = SubResource("Theme_ya2e4")
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+text = "Items"
+
+[node name="Label3" type="Label" parent="Text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 433.0
+offset_top = -6.0
+offset_right = 743.0
+offset_bottom = 17.0
+theme = SubResource("Theme_ya2e4")
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+text = "Timer"
+
+[node name="Label4" type="Label" parent="Text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 15.0
+offset_top = 570.0
+offset_right = 325.0
+offset_bottom = 593.0
+theme = SubResource("Theme_ya2e4")
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+text = "Data"
+
+[node name="Label" type="Label" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 441.0
+offset_top = -11.0
+offset_right = 711.0
+offset_bottom = 77.0
+theme = SubResource("Theme_6sl1r")
+text = "This is a timer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DraggableSprites" type="Node2D" parent="."]
+z_index = 2
+texture_filter = 1
+
+[node name="LifeObject" parent="DraggableSprites" instance=ExtResource("4_ya2e4")]
+z_index = 3
+position = Vector2(346, 740)
+
+[node name="LifeObject2" parent="DraggableSprites" instance=ExtResource("4_ya2e4")]
+z_index = 3
+position = Vector2(566, 740)
+
+[node name="LifeObject3" parent="DraggableSprites" instance=ExtResource("4_ya2e4")]
+z_index = 3
+position = Vector2(795, 740)
+
+[node name="Node2D" type="StaticBody2D" parent="."]
+collision_layer = 240
+collision_mask = 240
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(1343.5, 432.5)
+shape = SubResource("RectangleShape2D_ya2e4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(1223.25, 720.5)
+shape = SubResource("RectangleShape2D_5lrfp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(118.5, 721)
+shape = SubResource("RectangleShape2D_f6la0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(-37, 429.5)
+shape = SubResource("RectangleShape2D_djkp1")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(760.5, -32)
+shape = SubResource("RectangleShape2D_ay0lb")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(745.75, 901)
+shape = SubResource("RectangleShape2D_nmkph")
+
+[node name="GeneratedPopups" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UploadAnimation" type="Node2D" parent="."]
+visible = false
+z_index = 4
+position = Vector2(571, 263)
+
+[node name="Sprite2D" type="Sprite2D" parent="UploadAnimation"]
+position = Vector2(0, 4)
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_f6la0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UploadAnimation"]
+position = Vector2(0, 61)
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_djkp1")
+
+[node name="Upload1" type="AnimationPlayer" parent="UploadAnimation"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_djkp1")
+}
+autoplay = "Upload_Sway"
+
+[node name="Upload2" type="AnimationPlayer" parent="UploadAnimation"]
+libraries = {
+&"": SubResource("AnimationLibrary_nmkph")
+}
+autoplay = "Upload_Bounce"
+
+[node name="HotSpots" type="Node2D" parent="."]
+
+[node name="LifeDocks" type="Area2D" parent="HotSpots"]
+script = ExtResource("6_f6la0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotSpots/LifeDocks"]
+position = Vector2(580, 725.5)
+shape = SubResource("RectangleShape2D_8wnqf")
+debug_color = Color(0.996882, 0, 0.177819, 0.42)
+
+[node name="Upload" type="Area2D" parent="HotSpots"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotSpots/Upload"]
+position = Vector2(577.5, 299.75)
+shape = SubResource("RectangleShape2D_87gun")
+debug_color = Color(0.996078, 0, 0.176471, 0.419608)
+
+[connection signal="dropped" from="DraggableSprites/LifeObject" to="." method="_on_life_object_dropped"]
+[connection signal="dropped" from="DraggableSprites/LifeObject2" to="." method="_on_life_object_dropped"]
+[connection signal="dropped" from="DraggableSprites/LifeObject3" to="." method="_on_life_object_dropped"]
+[connection signal="mouse_entered" from="HotSpots/LifeDocks" to="HotSpots/LifeDocks" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="HotSpots/LifeDocks" to="HotSpots/LifeDocks" method="_on_mouse_exited"]

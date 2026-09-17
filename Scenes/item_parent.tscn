@@ -1,0 +1,114 @@
+[gd_scene load_steps=18 format=3 uid="uid://b4rgvvgialq2i"]
+
+[ext_resource type="Script" uid="uid://4633womriia2" path="res://Scripts/item_parent.gd" id="1_gs6l4"]
+[ext_resource type="Script" uid="uid://dm2lbxml7bqvc" path="res://Scripts/Sub_Scripts/button.gd" id="2_nmlsc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3pgcl"]
+radius = 2.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gs6l4"]
+rough = true
+bounce = 0.5
+
+[sub_resource type="GDScript" id="GDScript_nmlsc"]
+script/source = "extends RigidBody2D
+
+var teleport
+var target_pos
+
+	
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if teleport:
+		state.transform.origin = target_pos
+		
+		state.transform.x = Vector2(cos(0), sin(0))
+		state.transform.y = Vector2(-sin(0), cos(0))
+		
+		linear_velocity = Vector2(0,0)
+		angular_velocity = 0
+		
+		teleport = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs6l4"]
+size = Vector2(44, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmlsc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrmxc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2phb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_isftl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_44w36"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tirml"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wi7wb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_divfy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywk0g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4v6y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jy61d"]
+
+[node name="ItemParent" type="Node2D"]
+script = ExtResource("1_gs6l4")
+
+[node name="CursorPoint" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CursorPoint"]
+shape = SubResource("CircleShape2D_3pgcl")
+
+[node name="PinJoint2d" type="PinJoint2D" parent="CursorPoint"]
+node_a = NodePath("../../Item")
+node_b = NodePath("..")
+softness = 0.25
+
+[node name="Item" type="RigidBody2D" parent="."]
+texture_filter = 1
+collision_layer = 32
+collision_mask = 96
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_gs6l4")
+gravity_scale = 5.0
+can_sleep = false
+freeze_mode = 1
+linear_damp = 1.0
+angular_damp = 0.5
+script = SubResource("GDScript_nmlsc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+shape = SubResource("RectangleShape2D_gs6l4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Item"]
+
+[node name="Button" type="Button" parent="Item"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+pivot_offset = Vector2(8, 8)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nmlsc")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_yrmxc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x2phb")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_isftl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_44w36")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_tirml")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wi7wb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_divfy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ywk0g")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h4v6y")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jy61d")
+button_mask = 3
+flat = true
+script = ExtResource("2_nmlsc")
+
+[connection signal="l_click" from="Item/Button" to="." method="_on_button_l_click"]
+[connection signal="r_click" from="Item/Button" to="." method="_on_button_r_click"]
+[connection signal="release" from="Item/Button" to="." method="_on_button_release"]

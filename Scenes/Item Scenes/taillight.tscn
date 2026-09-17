@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bs4wes58m0hq0"]
+
+[ext_resource type="PackedScene" uid="uid://b4rgvvgialq2i" path="res://Scenes/item_parent.tscn" id="1_t2g3w"]
+[ext_resource type="Texture2D" uid="uid://c0oynv3t4pdq3" path="res://Assets/MBR Common.png" id="2_3qird"]
+[ext_resource type="Script" uid="uid://4i53uixf42ed" path="res://Scripts/Item _Scripts/taillight.gd" id="2_wwd1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qird"]
+size = Vector2(16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwd1w"]
+atlas = ExtResource("2_3qird")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0i5q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwd1w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Taillight" instance=ExtResource("1_t2g3w")]
+script = ExtResource("2_wwd1w")
+
+[node name="CollisionShape2D" parent="Item" index="0"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_3qird")
+
+[node name="AnimatedSprite2D" parent="Item" index="1"]
+sprite_frames = SubResource("SpriteFrames_y0i5q")

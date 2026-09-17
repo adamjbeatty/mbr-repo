@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dr6u6alykmbiq"]
+
+[ext_resource type="PackedScene" uid="uid://b4rgvvgialq2i" path="res://Scenes/item_parent.tscn" id="1_yrla2"]
+[ext_resource type="Script" uid="uid://42a3c72rdl73" path="res://Scripts/Item _Scripts/fan.gd" id="2_2nom3"]
+[ext_resource type="Texture2D" uid="uid://c0oynv3t4pdq3" path="res://Assets/MBR Common.png" id="3_jj2ic"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrla2"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij7m4"]
+atlas = ExtResource("3_jj2ic")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpgy5"]
+atlas = ExtResource("3_jj2ic")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lm6e4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij7m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpgy5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.5
+}]
+
+[node name="Fan" instance=ExtResource("1_yrla2")]
+script = ExtResource("2_2nom3")
+
+[node name="CollisionShape2D" parent="Item" index="0"]
+shape = SubResource("RectangleShape2D_yrla2")
+
+[node name="AnimatedSprite2D" parent="Item" index="1"]
+sprite_frames = SubResource("SpriteFrames_lm6e4")
+autoplay = "default"
+frame_progress = 0.841439

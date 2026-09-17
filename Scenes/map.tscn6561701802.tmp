@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://clseijtg1gnd"]
+
+[ext_resource type="Script" uid="uid://os6dbocj5o5c" path="res://Scripts/map.gd" id="1_ci6au"]
+[ext_resource type="Texture2D" uid="uid://llcbxrcus8ru" path="res://Assets/MBR Map Paths.png" id="2_26yhd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3ir5"]
+texture = ExtResource("2_26yhd")
+2:0/0 = 0
+2:0/0/terrain_set = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+5:1/0 = 0
+5:1/0/terrain_set = 0
+6:1/0 = 0
+6:1/0/terrain_set = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+5:2/0 = 0
+5:2/0/terrain_set = 0
+6:2/0 = 0
+6:2/0/terrain_set = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+
+[sub_resource type="TileSet" id="TileSet_myvm1"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Path"
+terrain_set_0/terrain_0/color = Color(0.719175, 0, 0.231651, 1)
+sources/1 = SubResource("TileSetAtlasSource_p3ir5")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26yhd"]
+texture = ExtResource("2_26yhd")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_myvm1"]
+texture = ExtResource("2_26yhd")
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q0mm3"]
+sources/0 = SubResource("TileSetAtlasSource_26yhd")
+sources/1 = SubResource("TileSetAtlasSource_myvm1")
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_ci6au")
+
+[node name="Path1" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path2" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path3" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path4" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="Path5" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_myvm1")
+
+[node name="TakenPath" type="TileMapLayer" parent="."]
+modulate = Color(0.255306, 0.71061, 0.722936, 1)
+tile_set = SubResource("TileSet_q0mm3")
+
+[node name="PathNodes" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(387, 229)
+zoom = Vector2(0.66, 0.66)

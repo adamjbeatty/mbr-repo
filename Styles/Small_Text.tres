@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bpol2w1qjkfyu"]
+
+[ext_resource type="FontFile" uid="uid://d11xf48fteue" path="res://Assets/pcsenior.ttf" id="1_4x1eh"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_4x1eh")
+font_size = 8

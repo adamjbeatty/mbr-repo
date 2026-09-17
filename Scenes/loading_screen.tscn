@@ -1,0 +1,324 @@
+[gd_scene load_steps=22 format=3 uid="uid://cue72soq3uipn"]
+
+[ext_resource type="Script" uid="uid://b85fcs2klabf5" path="res://Scripts/loading_screen.gd" id="1_fayou"]
+[ext_resource type="Texture2D" uid="uid://qps2q7pq35p0" path="res://Assets/MBR Runner Sprites.png" id="1_oobaa"]
+[ext_resource type="Script" uid="uid://djhqqpik03g" path="res://Scripts/Sub_Scripts/Loading_Animated_Sprite.gd" id="2_0t5xw"]
+[ext_resource type="Texture2D" uid="uid://b5m3dxxs6xklk" path="res://Assets/MBR UI Elements.png" id="3_nfm0g"]
+
+[sub_resource type="Shader" id="Shader_h5lxv"]
+code = "shader_type canvas_item;
+uniform float u_speed = .1;
+uniform int pixelation = 100;
+
+uniform vec4 u_color_low : source_color = vec4(0.374, 0.374, 0.374,1.0);
+uniform vec4 u_color_mid_red : source_color = vec4(.8, 0.8, 0.8, 1.0);
+uniform vec4 u_color_high : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+
+
+#define iTime (TIME * u_speed)
+#define iResolution 1.0/SCREEN_PIXEL_SIZE
+
+const mat2 mtx = mat2( vec2(0.80, -0.60), vec2(0.60, 0.80) );
+
+float rand(vec2 n) {
+    return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+}
+
+float noise(vec2 p){
+    vec2 ip = floor(p);
+    vec2 u = fract(p);
+    u = u * u * (3.0 - 2.0 * u);
+
+    float res = mix(
+        mix(rand(ip), rand(ip + vec2(1.0, 0.0)), u.x),
+        mix(rand(ip + vec2(0.0, 1.0)), rand(ip + vec2(1.0, 1.0)), u.x), u.y);
+
+    return res * res;
+}
+
+float fbm( vec2 p )
+{
+    float f = 0.0;
+
+    f += 0.500000 * noise( p + iTime ); p = mtx * p * 2.02;
+    f += 0.031250 * noise( p ); p = mtx * p * 2.01;
+    f += 0.250000 * noise( p ); p = mtx * p * 2.03;
+    f += 0.125000 * noise( p ); p = mtx * p * 2.01;
+    f += 0.062500 * noise( p ); p = mtx * p * 2.04;
+    f += 0.015625 * noise( p + sin(iTime) );
+
+    return f / 1.0;
+}
+
+float pattern( in vec2 p )
+{
+	return fbm( p + fbm( p + fbm( p ) ) );
+}
+
+vec4 colormap(float x) {
+
+    if (x < 0.24) {
+        return mix(u_color_low, u_color_mid_red, x / 0.24);
+    }
+    else {
+        return mix(u_color_mid_red, u_color_high, (x - 0.24) / 0.76);
+    }
+}
+
+void fragment()
+{
+    vec2 screen_size = 0.25 / SCREEN_PIXEL_SIZE;
+    vec2 uv = round(SCREEN_UV * float(pixelation)) / float(pixelation);
+   	float shade = pattern(uv);
+
+    COLOR.rgba *= colormap(shade);
+
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oobaa"]
+shader = SubResource("Shader_h5lxv")
+shader_parameter/u_speed = 0.25
+shader_parameter/pixelation = 1000
+shader_parameter/u_color_low = Color(0.423651, 0.423651, 0.423651, 1)
+shader_parameter/u_color_mid_red = Color(0.720467, 0.720468, 0.720467, 1)
+shader_parameter/u_color_high = Color(0.894922, 0.894922, 0.894922, 1)
+
+[sub_resource type="Animation" id="Animation_nfm0g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D2/Node2D/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fayou"]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0t5xw"]
+_data = {
+&"Fade": SubResource("Animation_fayou"),
+&"RESET": SubResource("Animation_nfm0g")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1godw"]
+atlas = ExtResource("1_oobaa")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t5xw"]
+atlas = ExtResource("1_oobaa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfm0g"]
+atlas = ExtResource("1_oobaa")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fayou"]
+atlas = ExtResource("1_oobaa")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oobaa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1godw")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t5xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfm0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fayou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfm0g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0t5xw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1godw")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t5xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfm0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fayou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfm0g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfm0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1godw")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0t5xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfm0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fayou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfm0g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yisgd"]
+atlas = ExtResource("3_nfm0g")
+region = Rect2(208, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gegoj"]
+atlas = ExtResource("3_nfm0g")
+region = Rect2(224, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2hk5"]
+atlas = ExtResource("3_nfm0g")
+region = Rect2(240, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1opfs"]
+atlas = ExtResource("3_nfm0g")
+region = Rect2(256, 32, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xbrhi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yisgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gegoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2hk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1opfs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[node name="LoadingScreen" type="CanvasLayer" node_paths=PackedStringArray("animation")]
+layer = 5
+script = ExtResource("1_fayou")
+animation = NodePath("Node2D2/AnimationPlayer")
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Node2D2"]
+material = SubResource("ShaderMaterial_oobaa")
+offset_right = 1536.0
+offset_bottom = 864.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D2"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_0t5xw")
+}
+autoplay = "Fade"
+
+[node name="Node2D" type="Node2D" parent="Node2D2"]
+position = Vector2(0, 764)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D2/Node2D"]
+position = Vector2(1231, 0)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_oobaa")
+animation = &"Jump"
+autoplay = "default"
+script = ExtResource("2_0t5xw")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Node2D2/Node2D"]
+position = Vector2(1133, 0)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_0t5xw")
+animation = &"Jump"
+autoplay = "default"
+script = ExtResource("2_0t5xw")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Node2D2/Node2D"]
+position = Vector2(1036, 0)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_nfm0g")
+animation = &"Jump"
+autoplay = "default"
+script = ExtResource("2_0t5xw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D2"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1394, 732)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_xbrhi")
+autoplay = "default"
+frame_progress = 0.108795

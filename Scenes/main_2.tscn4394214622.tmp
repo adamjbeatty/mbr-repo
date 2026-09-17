@@ -1,0 +1,462 @@
+[gd_scene load_steps=30 format=3 uid="uid://ddpdou6icym4n"]
+
+[ext_resource type="PackedScene" uid="uid://clseijtg1gnd" path="res://Scenes/map.tscn" id="1_6sl1r"]
+[ext_resource type="PackedScene" uid="uid://84lftidactv4" path="res://Scenes/FullOverlay.tscn" id="1_vijbk"]
+[ext_resource type="Script" uid="uid://bi8pj6n6vpn41" path="res://Scripts/main_2.gd" id="1_ya2e4"]
+[ext_resource type="LabelSettings" uid="uid://bpol2w1qjkfyu" path="res://Styles/Small_Text.tres" id="4_f6la0"]
+[ext_resource type="PackedScene" uid="uid://i4pdjlfu1kha" path="res://Scenes/life_object.tscn" id="4_ya2e4"]
+[ext_resource type="Texture2D" uid="uid://b5m3dxxs6xklk" path="res://Assets/MBR UI Elements.png" id="5_5lrfp"]
+[ext_resource type="LabelSettings" uid="uid://bvf7km7ny6rh5" path="res://Styles/Large_Text_Shadow_2.tres" id="5_djkp1"]
+[ext_resource type="StyleBox" uid="uid://c22mydb5jbh0i" path="res://Styles/Panel_Fill.tres" id="8_8wnqf"]
+[ext_resource type="StyleBox" uid="uid://1gcq268rouif" path="res://Styles/Panel_Border.tres" id="9_87gun"]
+[ext_resource type="LabelSettings" uid="uid://k3afp6io5wtp" path="res://Styles/Large_Text_Shadow.tres" id="10_hvjex"]
+
+[sub_resource type="SystemFont" id="SystemFont_6sl1r"]
+
+[sub_resource type="Theme" id="Theme_ya2e4"]
+default_font = SubResource("SystemFont_6sl1r")
+default_font_size = 15
+
+[sub_resource type="Theme" id="Theme_6sl1r"]
+default_font_size = 40
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya2e4"]
+size = Vector2(385, 863)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lrfp"]
+size = Vector2(381.5, 287)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6la0"]
+size = Vector2(345, 286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djkp1"]
+size = Vector2(72, 995)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ay0lb"]
+size = Vector2(1541, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmkph"]
+size = Vector2(1578.5, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6la0"]
+atlas = ExtResource("5_5lrfp")
+region = Rect2(208, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djkp1"]
+atlas = ExtResource("5_5lrfp")
+region = Rect2(160, 0, 48, 32)
+
+[sub_resource type="Animation" id="Animation_f6la0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UploadAnimation:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5lrfp"]
+resource_name = "Upload_Sway"
+length = 18.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UploadAnimation:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5, 8.9915, 13.5, 18),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.1309, 0.0, 0.1309, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_djkp1"]
+_data = {
+&"RESET": SubResource("Animation_f6la0"),
+&"Upload_Sway": SubResource("Animation_5lrfp")
+}
+
+[sub_resource type="Animation" id="Animation_ay0lb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 61)]
+}
+
+[sub_resource type="Animation" id="Animation_djkp1"]
+resource_name = "Upload_Bounce"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.79377, 1.1496, 2.02548, 2.38131, 3.01085, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(0, -30), Vector2(0, 4), Vector2(0, -30), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.08935, 1.43149, 2.30738, 3, 4.63333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 61), Vector2(0, 61), Vector2(0, 79), Vector2(0, 61), Vector2(0, 79), Vector2(0, 61), Vector2(0, 61)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmkph"]
+_data = {
+&"RESET": SubResource("Animation_ay0lb"),
+&"Upload_Bounce": SubResource("Animation_djkp1")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay0lb"]
+atlas = ExtResource("5_5lrfp")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmkph"]
+atlas = ExtResource("5_5lrfp")
+region = Rect2(48, 0, 16, 16)
+
+[node name="Main2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ya2e4")
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+stretch = true
+stretch_shrink = 2
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+size = Vector2i(768, 432)
+size_2d_override = Vector2i(768, 432)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Map" parent="SubViewportContainer2/SubViewport" instance=ExtResource("1_6sl1r")]
+texture_filter = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(768, 432)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="CanvasLayer" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_vijbk")]
+
+[node name="Text" type="Control" parent="."]
+z_index = 2
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 13.0
+offset_top = 2.0
+offset_right = 323.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+text = "Runner"
+label_settings = ExtResource("4_f6la0")
+
+[node name="Label2" type="Label" parent="Text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1165.0
+offset_top = 2.0
+offset_right = 1475.0
+offset_bottom = 25.0
+theme = SubResource("Theme_ya2e4")
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+text = "Items"
+label_settings = ExtResource("4_f6la0")
+
+[node name="Label3" type="Label" parent="Text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 436.0
+offset_top = 2.0
+offset_right = 746.0
+offset_bottom = 25.0
+theme = SubResource("Theme_ya2e4")
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+text = "Timer"
+label_settings = ExtResource("4_f6la0")
+
+[node name="Label4" type="Label" parent="Text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = 578.0
+offset_right = 324.0
+offset_bottom = 601.0
+theme = SubResource("Theme_ya2e4")
+theme_override_colors/font_color = Color(0.364706, 0.364706, 0.364706, 1)
+text = "Data"
+label_settings = ExtResource("4_f6la0")
+
+[node name="Label3" type="Label" parent="."]
+z_index = 3
+layout_mode = 0
+offset_left = 105.0
+offset_top = 791.0
+offset_right = 345.0
+offset_bottom = 814.0
+text = "Bit Counter!"
+label_settings = ExtResource("5_djkp1")
+
+[node name="Label2" type="Label" parent="."]
+z_index = 3
+layout_mode = 0
+offset_left = 104.0
+offset_top = 671.0
+offset_right = 344.0
+offset_bottom = 694.0
+text = "Also a timer"
+label_settings = ExtResource("5_djkp1")
+
+[node name="Label" type="Label" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 441.0
+offset_top = -11.0
+offset_right = 711.0
+offset_bottom = 77.0
+theme = SubResource("Theme_6sl1r")
+text = "This is a timer"
+label_settings = ExtResource("5_djkp1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DraggableSprites" type="Node2D" parent="."]
+z_index = 3
+texture_filter = 1
+
+[node name="LifeObject" parent="DraggableSprites" instance=ExtResource("4_ya2e4")]
+z_index = 4
+position = Vector2(479, 740)
+
+[node name="LifeObject2" parent="DraggableSprites" instance=ExtResource("4_ya2e4")]
+z_index = 4
+position = Vector2(748, 740)
+
+[node name="LifeObject3" parent="DraggableSprites" instance=ExtResource("4_ya2e4")]
+z_index = 4
+position = Vector2(1013, 740)
+
+[node name="AbsoluteBorders" type="StaticBody2D" parent="."]
+collision_layer = 240
+collision_mask = 240
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AbsoluteBorders"]
+polygon = PackedVector2Array(-1096, -632, 2350, -552, 2242, 1599, -862, 1657, -1093, -632, -1, -39, 1, 863, 1536, 864, 1535.2, 176.997, 1535, 0, 0, 1, -1, -39, -88, -45)
+
+[node name="LifeBorders" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LifeBorders"]
+position = Vector2(1343.5, 432.5)
+shape = SubResource("RectangleShape2D_ya2e4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LifeBorders"]
+position = Vector2(1343.75, 720.5)
+shape = SubResource("RectangleShape2D_5lrfp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LifeBorders"]
+position = Vector2(173.5, 721)
+shape = SubResource("RectangleShape2D_f6la0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="LifeBorders"]
+position = Vector2(-37, 429.5)
+shape = SubResource("RectangleShape2D_djkp1")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="LifeBorders"]
+position = Vector2(760.5, -32)
+shape = SubResource("RectangleShape2D_ay0lb")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="LifeBorders"]
+position = Vector2(745.75, 901)
+shape = SubResource("RectangleShape2D_nmkph")
+
+[node name="InventoryBorders" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InventoryBorders"]
+polygon = PackedVector2Array(1163, -23, 1163, 291, 1552, 290, 1551, 303, 1161.92, 303.003, 1160, 879, 1141, 876, 1147, -24)
+
+[node name="GeneratedPopups" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UploadAnimation" type="Node2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(571, 263)
+
+[node name="Sprite2D" type="Sprite2D" parent="UploadAnimation"]
+position = Vector2(0, 4)
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_f6la0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UploadAnimation"]
+position = Vector2(0, 61)
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_djkp1")
+
+[node name="Upload1" type="AnimationPlayer" parent="UploadAnimation"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_djkp1")
+}
+autoplay = "Upload_Sway"
+
+[node name="Upload2" type="AnimationPlayer" parent="UploadAnimation"]
+libraries = {
+&"": SubResource("AnimationLibrary_nmkph")
+}
+autoplay = "Upload_Bounce"
+
+[node name="HotSpots" type="Node2D" parent="."]
+
+[node name="UploadMarker" type="Marker2D" parent="HotSpots"]
+position = Vector2(576, 301)
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="ClockSprite" type="Sprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+position = Vector2(55, 682)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_ay0lb")
+
+[node name="BitSprite" type="Sprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+position = Vector2(55, 800)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_nmkph")
+
+[node name="InventoryItems" type="Node2D" parent="."]
+z_index = 2
+
+[node name="PopupPositioner" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Popup" type="MarginContainer" parent="PopupPositioner"]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = -1
+anchor_left = 0.0592448
+anchor_top = 0.288194
+anchor_right = 0.373698
+anchor_bottom = 0.349537
+offset_left = 72.5
+offset_top = 145.5
+offset_right = 372.5
+offset_bottom = 217.5
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="PopupPositioner/Popup"]
+self_modulate = Color(0.478431, 0.478431, 0.478431, 1)
+show_behind_parent = true
+layout_mode = 2
+theme_override_styles/panel = ExtResource("8_8wnqf")
+
+[node name="PanelContainer" type="Panel" parent="PopupPositioner/Popup"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("9_87gun")
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupPositioner/Popup"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="PopupPositioner/Popup/MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "This is some text that is filling a popup"
+label_settings = ExtResource("10_hvjex")
+autowrap_mode = 2
+
+[connection signal="dropped" from="DraggableSprites/LifeObject" to="." method="_on_life_object_dropped"]
+[connection signal="dropped" from="DraggableSprites/LifeObject2" to="." method="_on_life_object_dropped"]
+[connection signal="dropped" from="DraggableSprites/LifeObject3" to="." method="_on_life_object_dropped"]

@@ -1,0 +1,476 @@
+[gd_scene load_steps=56 format=3 uid="uid://b8itf38eatufs"]
+
+[ext_resource type="Script" uid="uid://cg60noidym83y" path="res://Scripts/main_menu.gd" id="1_n45e2"]
+[ext_resource type="Texture2D" uid="uid://cft8wkj53s5lh" path="res://Assets/Tab_Box_Fill.tres" id="2_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://3yw1klwsnsje" path="res://Assets/MainMenu/MBR MM BG.png" id="2_vr1f0"]
+[ext_resource type="Texture2D" uid="uid://lcbrfkn0xe16" path="res://Assets/Tab_Box_Outline.tres" id="3_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://b0r5mxk04l4wd" path="res://Assets/MainMenu/MBR MM Char.png" id="3_t1dhk"]
+[ext_resource type="Texture2D" uid="uid://bx2qeeccmclpw" path="res://Assets/MainMenu/MBR MM MBR.png" id="4_5egv6"]
+[ext_resource type="FontFile" uid="uid://d11xf48fteue" path="res://Assets/pcsenior.ttf" id="5_opfnp"]
+[ext_resource type="Texture2D" uid="uid://b0ib0k3k5f6r6" path="res://Assets/MainMenu/MBR MM Corruption.png" id="5_vtepg"]
+[ext_resource type="Texture2D" uid="uid://drpbvvj5hrsp" path="res://Assets/MainMenu/MBR MM Squares.png" id="6_8dnnj"]
+[ext_resource type="Texture2D" uid="uid://bvdcyohnxbq03" path="res://Assets/MainMenu/MBR MM USB.png" id="7_m3bi6"]
+[ext_resource type="Texture2D" uid="uid://bvvv0sexfruqt" path="res://Assets/MainMenu/MBR MM Lightning.png" id="8_wyh8j"]
+[ext_resource type="Texture2D" uid="uid://2683adqwqm5q" path="res://Assets/MainMenu/MBR MM Morder.png" id="9_t1dhk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n45e2"]
+texture = ExtResource("2_1ehe0")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
+texture = ExtResource("3_ce3w2")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cp0ys"]
+texture = ExtResource("2_1ehe0")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n45e2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5egv6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtepg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dnnj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3bi6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wyh8j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujyyl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mkpwh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trj04"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yhxw7"]
+font = ExtResource("5_opfnp")
+font_size = 8
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.345098)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opfnp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nkqq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehtkc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6dk6o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jr6u5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6m47u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84iac"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5n0dv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_16hvj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cp0ys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ne6ao"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tt8ml"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmarx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkdq0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xcoo4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jw7lb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vfk8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vr1f0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhxw7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1xund"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msuys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aylim"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y82t1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bmhhk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pddej"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ko05x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1dhk"]
+
+[sub_resource type="Animation" id="Animation_opfnp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -667)]
+}
+
+[sub_resource type="Animation" id="Animation_n45e2"]
+resource_name = "Slide_In"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.48, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -2439), Vector2(0, 74), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cp0ys"]
+_data = {
+&"RESET": SubResource("Animation_opfnp"),
+&"Slide_In": SubResource("Animation_n45e2")
+}
+
+[node name="Main Menu" type="CanvasLayer"]
+script = ExtResource("1_n45e2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1841.0
+offset_top = -1352.0
+offset_right = 2220.0
+offset_bottom = 1566.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.168627, 0.054902, 0.160784, 1)
+
+[node name="Control" type="Control" parent="."]
+z_index = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vr1f0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Char" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_t1dhk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MBR" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_5egv6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Corruption" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_vtepg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Squares" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_8dnnj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="USB" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_m3bi6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lightning" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_wyh8j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Overlay" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_t1dhk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -667)
+scale = Vector2(2, 2)
+
+[node name="Control2" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 41.0
+offset_top = 67.5
+offset_right = 192.0
+offset_bottom = 325.5
+
+[node name="Panel2" type="Panel" parent="Node2D/Control2"]
+visible = false
+self_modulate = Color(0.478431, 0.478431, 0.478431, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_n45e2")
+
+[node name="Panel" type="Panel" parent="Node2D/Control2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_opfnp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Node2D/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/Control2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Panel" type="Panel" parent="Node2D/Control2/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cp0ys")
+
+[node name="Start" type="Button" parent="Node2D/Control2/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 25.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n45e2")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_5egv6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vtepg")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_8dnnj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m3bi6")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wyh8j")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ujyyl")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_mkpwh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trj04")
+flat = true
+
+[node name="Label" type="Label" parent="Node2D/Control2/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(70.5, 12.5)
+text = "Run Program"
+label_settings = SubResource("LabelSettings_yhxw7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="Node2D/Control2/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.203922, 0.203922, 0.203922, 0)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cp0ys")
+
+[node name="Settings" type="Button" parent="Node2D/Control2/MarginContainer/VBoxContainer/Panel2"]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 25.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_opfnp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_4nkqq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ehtkc")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_6dk6o")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_jr6u5")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_6m47u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_84iac")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_5n0dv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_16hvj")
+flat = true
+
+[node name="Label" type="Label" parent="Node2D/Control2/MarginContainer/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(70.5, 12.5)
+text = "Settings"
+label_settings = SubResource("LabelSettings_yhxw7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Node2D/Control2/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.203922, 0.203922, 0.203922, 0)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cp0ys")
+
+[node name="Encyclopedia" type="Button" parent="Node2D/Control2/MarginContainer/VBoxContainer/Panel3"]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 25.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cp0ys")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ne6ao")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tt8ml")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_fmarx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hkdq0")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_xcoo4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jw7lb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_6vfk8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vr1f0")
+flat = true
+
+[node name="Label" type="Label" parent="Node2D/Control2/MarginContainer/VBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(70.5, 12.5)
+text = "Encyclopedia"
+label_settings = SubResource("LabelSettings_yhxw7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel5" type="Panel" parent="Node2D/Control2/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.203922, 0.203922, 0.203922, 0)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_cp0ys")
+
+[node name="Quit" type="Button" parent="Node2D/Control2/MarginContainer/VBoxContainer/Panel5"]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 25.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yhxw7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1xund")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_msuys")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_aylim")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_y82t1")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_bmhhk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pddej")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ko05x")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t1dhk")
+flat = true
+
+[node name="Label" type="Label" parent="Node2D/Control2/MarginContainer/VBoxContainer/Panel5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(70.5, 12.5)
+text = "Shut Down"
+label_settings = SubResource("LabelSettings_yhxw7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cp0ys")
+}
+
+[connection signal="mouse_entered" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel/Start" to="." method="_on_start_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel/Start" to="." method="_on_start_mouse_exited"]
+[connection signal="pressed" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel/Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel2/Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel2/Settings" to="." method="_on_settings_mouse_exited"]
+[connection signal="pressed" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel2/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel3/Encyclopedia" to="." method="_on_encyclopedia_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel3/Encyclopedia" to="." method="_on_encyclopedia_mouse_exited"]
+[connection signal="pressed" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel3/Encyclopedia" to="." method="_on_encyclopedia_pressed"]
+[connection signal="mouse_entered" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel5/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel5/Quit" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="Node2D/Control2/MarginContainer/VBoxContainer/Panel5/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

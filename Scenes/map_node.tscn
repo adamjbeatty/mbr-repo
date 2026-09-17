@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxro2kr1uovwb"]
+
+[ext_resource type="Script" uid="uid://7ykao81jd7c0" path="res://Scripts/map_node.gd" id="1_g7uvm"]
+[ext_resource type="Texture2D" uid="uid://bdqfl04qmlohf" path="res://Assets/Base Map Node.tres" id="1_wp7i3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g7uvm"]
+radius = 14.0
+
+[node name="MapNode" type="Node2D"]
+script = ExtResource("1_g7uvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wp7i3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_g7uvm")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,187 @@
+[gd_scene load_steps=15 format=3 uid="uid://cd7fg0aq15fdf"]
+
+[ext_resource type="FontFile" uid="uid://d11xf48fteue" path="res://Assets/pcsenior.ttf" id="1_emv3i"]
+[ext_resource type="Script" uid="uid://bgqcchemsdbc2" path="res://Scripts/pause_menu.gd" id="1_k0w1u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0w1u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1och7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpi0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vmyb1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myy0f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjs17"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u8tnp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_stj27"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ix48p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_524vl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fi7f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0w1u"]
+font = ExtResource("1_emv3i")
+font_size = 40
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.345098)
+shadow_offset = Vector2(6, 6)
+
+[node name="Pause_Menu" type="CanvasLayer"]
+process_mode = 3
+layer = -5
+visible = false
+script = ExtResource("1_k0w1u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -184.0
+offset_top = -172.0
+offset_right = 1718.0
+offset_bottom = 1021.0
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 90
+
+[node name="Panel" type="Control" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Resume" type="Button" parent="Control/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k0w1u")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1och7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpi0q")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vmyb1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_myy0f")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_sjs17")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u8tnp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_stj27")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ix48p")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_524vl")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0fi7f")
+flat = true
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(307, 56)
+text = "Resume"
+label_settings = SubResource("LabelSettings_k0w1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Control" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" type="Button" parent="Control/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k0w1u")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1och7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpi0q")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vmyb1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_myy0f")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_sjs17")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u8tnp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_stj27")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ix48p")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_524vl")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0fi7f")
+flat = true
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(307, 56)
+text = "Settings"
+label_settings = SubResource("LabelSettings_k0w1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel4" type="Control" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Exit" type="Button" parent="Control/VBoxContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k0w1u")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1och7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpi0q")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_vmyb1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_myy0f")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_sjs17")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u8tnp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_stj27")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ix48p")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_524vl")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0fi7f")
+flat = true
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(307, 56)
+text = "Quit to menu"
+label_settings = SubResource("LabelSettings_k0w1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Control/VBoxContainer/Panel/Resume" to="." method="_on_resume_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Panel/Resume" to="." method="_on_resume_mouse_exited"]
+[connection signal="pressed" from="Control/VBoxContainer/Panel/Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Panel2/Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Panel2/Settings" to="." method="_on_settings_mouse_exited"]
+[connection signal="pressed" from="Control/VBoxContainer/Panel2/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Panel4/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Control/VBoxContainer/Panel4/Exit" to="." method="_on_exit_mouse_exited"]
+[connection signal="pressed" from="Control/VBoxContainer/Panel4/Exit" to="." method="_on_exit_pressed"]
